@@ -1,0 +1,535 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"a",
+				"action	Attr"
+			],
+			[
+				"type",
+				"type_price"
+			],
+			[
+				"sub",
+				"sub_total"
+			],
+			[
+				"att",
+				"attributes"
+			],
+			[
+				"chip",
+				"chipboard_object"
+			],
+			[
+				"options",
+				"options_value"
+			],
+			[
+				"result",
+				"result_row"
+			],
+			[
+				"for",
+				"for	for …"
+			],
+			[
+				"pro",
+				"product_id"
+			],
+			[
+				"sur",
+				"surmesure_product"
+			],
+			[
+				"current",
+				"current_product"
+			],
+			[
+				"all",
+				"all_products"
+			],
+			[
+				"producta",
+				"products_information"
+			],
+			[
+				"prices",
+				"pricesHtml"
+			],
+			[
+				"pritn",
+				"print_r"
+			],
+			[
+				"array_p",
+				"array_push"
+			],
+			[
+				"product",
+				"product_id"
+			],
+			[
+				"curr",
+				"current_product"
+			],
+			[
+				"has",
+				"has_default_value"
+			],
+			[
+				"cart_",
+				"cart_attributes_information"
+			],
+			[
+				"object",
+				"object_product_special_price"
+			],
+			[
+				"array",
+				"array"
+			],
+			[
+				"tax",
+				"tax_class_id"
+			],
+			[
+				"products",
+				"products_options_id"
+			],
+			[
+				"distinct",
+				"DISTINCT"
+			],
+			[
+				"select",
+				"SELECT"
+			],
+			[
+				"products_",
+				"products_options_id"
+			],
+			[
+				"T",
+				"TABLE_PRODUCTS_OPTIONS_VALUES"
+			],
+			[
+				"glob",
+				"globals	$GLOBALS['…']"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"events",
+				"eventsToDelete"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/xampp/htdocs/GitHub/Documentation-generator"
+	],
+	"file_history":
+	[
+		"/D/xampp/htdocs/Documentation/data.json",
+		"/D/xampp/htdocs/Documentation/index.html",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/includes/application_bottom.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/includes/modules/payment/chronopay.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/admin/includes/languages/french/edit_orders.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/admin/optimize_db.php",
+		"/C/Users/Florian/Desktop/Run_SQL_v1.2.1 for osC2.2/0_single_file_solution/catalog/admin/run_sql.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/admin/includes/functions/run_sql.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/admin/includes/functions/general.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/admin/includes/functions/database.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/admin/backup.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/includes/functions/database.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/includes/fianet/orders.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/includes/classes/order.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/includes/classes/prices.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/admin/includes/classes/currencies.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/includes/application_top.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/includes/modules/product_listing.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/ajax_onchange_price2.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/ajax_onchange_price.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/admin/pdfpackingslip_casto.php",
+		"/C/Users/Florian/AppData/Local/Temp/Temp1_oscommerce-2.3.4.zip/oscommerce-2.3.4/catalog/admin/includes/functions/sessions.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/product_info.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/stylesheet.css",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/shopping_cart.php",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/C/Users/Florian/AppData/Local/Microsoft/Windows/INetCache/Content.Outlook/ZQN3R1E0/ATT00021.txt",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/includes/classes/shopping_cart.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/admin/edit_orders_ajax.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/includes/classes/split_page_results.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/index.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/index-test.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/includes/sts_templates/credence_left/sts_template.html",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/pdfinvoice.php",
+		"/C/Users/Florian/Documents/gitignore_global.txt",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/includes/configure.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/cache/config_cache.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/cache/box-heading-french.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/cache/infobox_left.tpl",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/includes/configuration_cache_read.php",
+		"/D/xampp/htdocs/Repositories/credence-inox.com/account.php",
+		"/D/Logiciels/Navicat Premium +KEY byYouTutorial/Key.txt",
+		"/D/xampp/htdocs/GitHub/credence-inox.com/includes/classes/prices.php",
+		"/D/xampp/htdocs/GitHub/credence-inox.com/product_info.php",
+		"/D/xampp/htdocs/GitHub/credence-inox.com/ajax_onchange_price2.php",
+		"/D/xampp/htdocs/GitHub/credence-inox.com/ajax_onchange_price.php",
+		"/D/xampp/htdocs/GitHub/credence-inox.com/cache/config_cache.php",
+		"/D/xampp/htdocs/GitHub/credence-inox.com/js/menu/menu.js",
+		"/D/xampp/htdocs/GitHub/credence-inox.com/includes/modules/product_selection.php",
+		"/D/xampp/htdocs/GitHub/credence-inox.com/product_reviews.php",
+		"/D/xampp/htdocs/GitHub/credence-inox.com/product_info.review.php",
+		"/D/xampp/htdocs/GitHub/credence-inox.com/includes/sts_templates/credence_left/sts_template.html",
+		"/D/xampp/phpMyAdmin/setup/validate.php",
+		"/D/xampp/phpMyAdmin/setup/index.php",
+		"/D/xampp/phpMyAdmin/setup/lib/common.inc.php",
+		"/D/xampp/phpMyAdmin/setup/frames/config.inc.php",
+		"/D/xampp/phpMyAdmin/setup/frames/servers.inc.php",
+		"/D/xampp/phpMyAdmin/libraries/common.lib.php",
+		"/D/xampp/phpMyAdmin/libraries/config.default.php",
+		"/D/xampp/php/php.ini",
+		"/D/xampp/mysql/bin/my.ini",
+		"/D/xampp/htdocs/GitHub/credence-inox.com/includes/configure.php",
+		"/D/xampp/htdocs/GitHub/credence-inox.com dev/includes/configure.php",
+		"/C/Users/Florian/Desktop/150129180205.sql",
+		"/C/Users/Florian/AppData/Local/Temp/Temp1_unassoc_1_4.zip/Readme.txt",
+		"/D/xampp/htdocs/GitHub/credence-inox.com/includes/classes/language.php",
+		"/D/wamp/www/index.php",
+		"/D/wamp/www/GitHub/credence-inox.com/includes/application_top.php",
+		"/D/wamp/www/GitHub/credence-inox.com/includes/configure.php",
+		"/D/xampp/phpMyAdmin/setup/config.php",
+		"/D/wamp/scripts/config.inc.php",
+		"/D/wamp/apps/phpmyadmin4.1.14/config.inc.php",
+		"/C/Windows/System32/Tasks/Microsoft/Windows/SoftwareProtectionPlatform/SvcRestartTask",
+		"/D/wamp/bin/php/DO_NOT_DELETE_5.5.12.txt",
+		"/C/wamp/www/phpMyAdmin/user_password.php",
+		"/C/wamp/www/phpMyAdmin/config.sample.inc.php",
+		"/C/wamp/apps/phpmyadmin4.1.14/config.inc.php",
+		"/C/wamp/www/phpMyAdmin/setup/config.php",
+		"/C/wamp/www/phpMyAdmin/setup/lib/common.inc.php",
+		"/C/Users/Florian/AppData/Local/Temp/Temp1_phpMyAdmin-4.3.6-all-languages.zip/phpMyAdmin-4.3.6-all-languages/index.php",
+		"/C/Users/Florian/Dropbox/JavaScript/Events/usefulFunctions.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Events/Events.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Events/main.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/fbarbare/demo/setup/setup.html",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/fbarbare/demo/setup/js/main.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/SDK/js/ve/events/Event.js",
+		"/C/Users/Florian/Boite/credence-inox.com/Site backup/credence-inox/live/site1-2014-03-29/checkout_confirmation.php",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/Array.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/attend/clock/Clock.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/attend/eventManager/EventManagerModel.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/SDK/js/ve/namespace.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/CaptureApps/Utils/ConsoleOverwrite.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Experiences/getFunctionsFromIframe/index.html",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/SDK/js/ve/cloneObject.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/SDK/js/ve/events/ElementEvent.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/SDK/js/ve/Array.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Experiences/getFunctionsFromIframe/main.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/SDK/js/ve/display/namespace.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/SDK/js/ve/display/CSS.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/SDK/js/ve/Number.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/SDK/gruntfile.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/compatibility/addEventListener.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/display/CSS.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/display/Elements.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/events/TimerEvent.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/events/AutoCompleteFieldEvent.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/events/Event.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/events/EventDispatcher.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/net/Response.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/net/RequestHeader.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/net/Request.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/net/namespace.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/net/Methods.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/net/LoaderState.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/net/Loader.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Events/index.html",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/net/Encoding.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/transitions/TweenManager.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/transitions/Tween.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/transitions/Transitions.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/utils/Timer.js",
+		"/C/Program Files/WinRAR/Rar.txt",
+		"/C/Users/Florian/Dropbox/JavaScript/Library/ve/utils/Dictionary.js",
+		"/C/Users/Florian/NodeJS/HelloWorld/program.js",
+		"/C/Users/Florian/Dropbox/JavaScript/Challenges/palindrome/palindrome.js",
+		"/C/Users/Florian/Dropbox/credence-inox/FLORIAN/work/design homepage/old version/home-page-content-flash-video.html",
+		"/C/Users/Florian/Boite/credence-inox.com/Site backup/credence-inox/live/site1-2014-03-29/cache/categories_box-french.cache123_320_783",
+		"/C/Users/Florian/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap"
+	],
+	"find":
+	{
+		"height": 22.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"D:\\xampp\\htdocs\\Repositories\\credence-inox.com\\includes,D:\\xampp\\htdocs\\Repositories\\credence-inox.com\\admin",
+			"D:\\xampp\\htdocs\\Repositories\\credence-inox.com\\includes",
+			"D:\\xampp\\htdocs\\Repositories\\credence-inox.com",
+			"D:\\xampp\\htdocs\\GitHub\\credence-inox.com"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"function session_is_registered",
+			"session_is_registered",
+			"tep_address_label",
+			"EMAIL_TEXT_BILLING_ADDRESS",
+			"Adresse de facturation",
+			"mysql_",
+			"TABLE_ORDERS",
+			"mysql_",
+			"platform_url",
+			"systempay",
+			"Le statut de votre commande a été mis à jour :",
+			"$final_prices[$i]['products_id']",
+			"infoBox",
+			"print",
+			"echo",
+			"Code CASTO",
+			"get_product_sur_mesure_prices",
+			"print",
+			"while",
+			"hello",
+			"print_r",
+			"hello",
+			"$cart",
+			"echo",
+			"align=\"center\"",
+			"getPr",
+			"optionsid",
+			"padding-top:70px;",
+			"getPriceFunction",
+			"display_price",
+			"getPriceFunction",
+			"noborderBox",
+			"$style",
+			"infoBoxGrid",
+			"print_",
+			"Florian",
+			"$button",
+			"button",
+			"display",
+			"list_box_data",
+			"show_price",
+			"$prices->",
+			"final_prices_html",
+			"print_r",
+			"$listing_sql",
+			"listing_split",
+			"prices",
+			"echo",
+			"Flori",
+			"print",
+			"new P",
+			"$final_prices['",
+			"$prices['",
+			"$this->products_information['",
+			"$this->product_information",
+			"product_id",
+			"list_box_data",
+			"list_box_head",
+			"tep_get_category_name",
+			"tep_get_manufacturer_name",
+			"tep_get_category_name",
+			"max_results",
+			"print_r",
+			"DIR_WS_CATALOG_IMAGES",
+			"MOPICS_SHOW_ALL_ON_PRODUCT_INFO",
+			"display_price",
+			"display_cheque",
+			"HTTP_GET_VARS['products_id']",
+			"100",
+			"tep_db_num_rows",
+			"final_prices_html",
+			"copy_price",
+			"final_prices_html",
+			"bouton_recalcul",
+			"currencies",
+			"int",
+			"products_attributes",
+			"optionsid",
+			"required",
+			"products_options_name_query",
+			"all_option_js",
+			"opt_count",
+			"credence_epaisse",
+			"affiche_txt_dimension",
+			"products_name",
+			"products_options_name_query",
+			"mysql_num_rows",
+			"tep_db_num_rows",
+			"hspace",
+			"aggloref",
+			"HTTP_GET_VARS",
+			"CLASSES",
+			"echo '<pre>';",
+			"<pre>",
+			"navprod",
+			"Florian",
+			"timeout",
+			"wait_timeout",
+			"28",
+			"28800",
+			"wait_timeout",
+			"upload_max_filesize",
+			"error_reporting",
+			"suppress_localhost",
+			"\"ctrl+f\"",
+			"ctrl+f",
+			"line_up",
+			"up",
+			"duplicate",
+			"comment",
+			"hello"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"$$products_complex_id[$i]",
+			"lc_text",
+			"lc_align",
+			"$final_prices[$i]['",
+			"$prices[$i]['",
+			"$this->products_information[$i]['",
+			"$this->products_information",
+			"products_id",
+			"product_id"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "Documentation-generator.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 294.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

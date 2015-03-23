@@ -11,9 +11,7 @@
 			"memberOf": "CaptureData",
 			"x": "600",
 			"y": "200",
-			"links": [{
-				"name": "SendDataReceiver.sendData"
-			}]
+			"links": ["SendDataReceiver-sendData"]
 		}, {
 			"name": "Constructor",
 			"memberOf": "SendDataReceiver",

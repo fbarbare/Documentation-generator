@@ -40,8 +40,8 @@
             rects,
             width,
             height,
-            links,
             glinks,
+            linksData = [],
             currentElement;
 
         function dragmove() {            
@@ -80,13 +80,21 @@
 
         rects = svg.selectAll('.node')
             .insert('rect', 'text')
-                .attr("x", function (d) {
+                .attr("data-generation", function (d) {
+                    d.links.forEach(function (id) {
+                        linksData.push(d);
+                        linksData[linksData.length - 1].target = id;
+                        linksData[linksData.length - 1].source = d.memberOf + '-' + d.name;
+                    });
+
                     d.currentElement = document.getElementById(d.memberOf + '-' + d.name);
+                    d.height = d.currentElement.getBBox().height + 6;
                     d.width = d.currentElement.getBBox().width + 6;
+                })
+                .attr("x", function (d) {
                     return -(d.width)/2;
                 })
                 .attr("y", function (d) {
-                    d.height = d.currentElement.getBBox().height + 6;
                     return -(d.height)/2 - 3;
                 })
                 .attr("width", function (d) {
@@ -104,6 +112,24 @@
                 .attr("stroke", function (d) {
                     return d.color;
                 });
+
+        links = svg.insert('g', '.nodes')
+                .attr('class', 'links')
+            .selectAll('line')
+                .data(linksData)
+            .enter().append('line')
+                .attr('class', 'link')
+                .attr('data-generation', function (d) {
+                    d.targetElement = document.getElementById(d.target);
+                })
+                .attr('x1', function (d) { return d.x; })
+                .attr('y1', function (d) { return d.y; })
+                .attr('x2', function (d) {
+                    return d.targetElement['__data__'].x;
+                })
+                .attr('y2', function (d) {
+                    return d.targetElement['__data__'].y;
+                })
 
         debugger;
     });
