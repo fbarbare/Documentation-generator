@@ -1,29 +1,39 @@
-{"nodes":[
-	{
-		"x":444,
-		"y":275
-	},{
-		"x":378,
-		"y":324
-	},{
-		"x":478,
-		"y":278
-	},{
-		"x":471,
-		"y":256
-	}],
-"links":[
-	{
-		"source":1,
-		"target":0
-	},{
-		"source":2,
-		"target":0
-	},{
-		"source":3,
-		"target":0
-	},{
-		"source":3,
-		"target":2
+{
+	"functions": [
+		{
+			"name": "Constructor",
+			"memberOf": "CaptureData",
+			"x": "200",
+			"y": "200",
+			"links": []
+		}, {
+			"name": "function1",
+			"memberOf": "CaptureData",
+			"x": "600",
+			"y": "200",
+			"links": [{
+				"name": "SendDataReceiver.sendData"
+			}]
+		}, {
+			"name": "Constructor",
+			"memberOf": "SendDataReceiver",
+			"x": "200",
+			"y": "600",
+			"links": []
+		}, {
+			"name": "sendData",
+			"memberOf": "SendDataReceiver",
+			"x": "600",
+			"y": "600",
+			"links": []
+		}
+	],
+	"classes": {
+		"CaptureData": {
+			"color": "#fff000"
+		},
+		"SendDataReceiver": {
+			"color": "#ff0000"
+		}
 	}
-]}
+}

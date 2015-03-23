@@ -1,0 +1,39 @@
+* {
+	margin: 0;
+	border: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+circle {
+  fill: #cccccc;
+}
+line {
+  stroke: #000000;
+}
+text {
+	fill: #000;
+	font: 10px sans-serif;
+	pointer-events: none;
+}
+rect {
+	stroke-width: 1.5px;
+	transition-property: opacity;
+	transition-duration: 250ms;
+	transition-timing-function: initial;
+	transition-delay: initial;
+	-webkit-transition-property: opacity;
+	-webkit-transition-duration: 250ms;
+	-webkit-transition-timing-function: initial;
+	-webkit-transition-delay: initial;
+	-moz-transition: opacity 250ms;
+}
+
+.inactive {
+	opacity: 0.2;
+}
+.node {
+	cursor: pointer;
+}
