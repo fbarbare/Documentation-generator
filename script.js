@@ -44,17 +44,38 @@
             linksData = [],
             currentElement;
 
-        function dragmove() {            
+        function dragstarted() {            
+            d3.event.sourceEvent.stopPropagation();
+        }
+        function dragmove(d) {            
             var x = d3.event.x,
                 y = d3.event.y;
 
             d3.select(this).attr('transform', 'translate(' + x + ', ' + y + ')');
-            // links.filter(function (l) {
-            //     return l.source === d;
-            // }).attr("x1", d.x).attr("y1", d.y);
+            links.filter(function (l) {
+                if(l.source.x === d.x && l.source.y === d.y) {
+                    l.source.x = x;
+                    l.source.y = y;
+                    return true;
+                }
+                return false;
+            }).attr("x1", x).attr("y1", y);
+            links.filter(function (l) {
+                if(l.target.x === d.x && l.target.y === d.y) {
+                    l.target.x = x;
+                    l.target.y = y;
+                    return true;
+                }
+                return false;
+            }).attr("x2", x).attr("y2", y);
+
+            d.x = x;
+            d.y = y;
         }
 
         drag = d3.behavior.drag()
+            .origin(function(d) { return d; })
+            .on("dragstart", dragstarted)
             .on("drag", dragmove);
 
         texts = svg.append('g')
@@ -82,9 +103,19 @@
             .insert('rect', 'text')
                 .attr("data-generation", function (d) {
                     d.links.forEach(function (id) {
-                        linksData.push(d);
-                        linksData[linksData.length - 1].target = id;
-                        linksData[linksData.length - 1].source = d.memberOf + '-' + d.name;
+                        var data = {
+                            source: {
+                                id: d.memberOf + '-' + d.name,
+                                element: d.currentElement,
+                                x: d.x,
+                                y: d.y
+                            },
+                            target: {
+                                id: id
+                            }
+                        };
+
+                        linksData.push(data);
                     });
 
                     d.currentElement = document.getElementById(d.memberOf + '-' + d.name);
@@ -120,17 +151,17 @@
             .enter().append('line')
                 .attr('class', 'link')
                 .attr('data-generation', function (d) {
-                    d.targetElement = document.getElementById(d.target);
+                    d.target.element = document.getElementById(d.target.id);
+                    d.target.x = d.target.element['__data__'].x;
+                    d.target.y = d.target.element['__data__'].y;
                 })
-                .attr('x1', function (d) { return d.x; })
-                .attr('y1', function (d) { return d.y; })
+                .attr('x1', function (d) { return d.source.x; })
+                .attr('y1', function (d) { return d.source.y; })
                 .attr('x2', function (d) {
-                    return d.targetElement['__data__'].x;
+                    return d.target.x;
                 })
                 .attr('y2', function (d) {
-                    return d.targetElement['__data__'].y;
-                })
-
-        debugger;
+                    return d.target.y;
+                });
     });
 }());
