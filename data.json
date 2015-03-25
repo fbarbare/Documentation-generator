@@ -1,37 +1,62 @@
 {
-	"functions": [
-		{
-			"name": "Constructor",
-			"memberOf": "CaptureData",
-			"x": "200",
-			"y": "200",
-			"links": []
-		}, {
-			"name": "function1",
-			"memberOf": "CaptureData",
-			"x": "600",
-			"y": "200",
-			"links": ["SendDataReceiver-sendData"]
-		}, {
-			"name": "Constructor",
-			"memberOf": "SendDataReceiver",
-			"x": "200",
-			"y": "600",
-			"links": []
-		}, {
-			"name": "sendData",
-			"memberOf": "SendDataReceiver",
-			"x": "600",
-			"y": "600",
-			"links": []
+	"config": {
+		"margin": {
+			"top": 20,
+			"right": 20,
+			"bottom": 20,
+			"left": 20
 		}
-	],
-	"classes": {
+	},
+	"groups": {
+		"Test": {
+			"color": "#0000FF",
+	        "weight": 0.7,
+	        "x": 0.2,
+	        "y": 0.2
+		},
 		"CaptureData": {
-			"color": "#fff000"
+			"color": "#FFF000",
+	        "weight": 0.7,
+	        "x": 0.2,
+	        "y": 0.2
 		},
 		"SendDataReceiver": {
-			"color": "#ff0000"
+			"color": "#FF0000",
+	        "weight": 0.7,
+	        "x": 0.2,
+	        "y": 0.2
+		}
+	},
+	"nodes": {
+		"Test": {
+			"name": "constructor",
+			"group": "Test",
+			"linkedTo": [],
+			"linkedBy": ["CaptureData", "SendDataReceiver"]
+		},
+		"CaptureData": {
+			"name": "constructor",
+			"group": "CaptureData",
+			"linkedTo": [],
+			"linkedBy": []
+		},
+		"CaptureData.function1": {
+			"name": "function1",
+			"group": "CaptureData",
+			"linkedTo": [],
+			"linkedBy": ["SendDataReceiver.sendData"]
+		},
+		"SendDataReceiver": {
+			"name": "constructor",
+			"group": "SendDataReceiver",
+			"linkedTo": [],
+			"linkedBy": []
+		},
+		"SendDataReceiver.sendData": {
+			"name": "sendData",
+			"group": "SendDataReceiver",
+			"linkedTo": [],
+			"linkedBy": []
 		}
 	}
 }

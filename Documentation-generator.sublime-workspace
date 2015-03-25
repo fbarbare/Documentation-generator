@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"get",
+				"getNodesFormatedData"
+			],
+			[
+				"links",
+				"linksData"
+			],
+			[
 				"offs",
 				"offsetWidth"
 			],
@@ -82,10 +90,6 @@
 			[
 				"ifrm",
 				"iframeId"
-			],
-			[
-				"get",
-				"getIframe"
 			],
 			[
 				"sto",
@@ -510,58 +514,11 @@
 			[
 				"searT",
 				"searchTermsInReferrer"
-			],
-			[
-				"padding",
-				"padding-bottom"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "style.css",
-			"settings":
-			{
-				"buffer_size": 662,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "graph.json",
-			"settings":
-			{
-				"buffer_size": 257,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "data.json",
-			"settings":
-			{
-				"buffer_size": 601,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "(function(){\n    var width = window.innerWidth,\n        height = window.innerHeight;\n\n    var svg = d3.select('body').append('svg')\n        .attr('width', width)\n        .attr('height', height);\n\n    function LightenDarkenColor(col, amt) {\n        var b,\n            g,\n            r,\n            num,\n            usePound = false;\n\n        if (col[0] == '#') {\n            col = col.slice(1);\n            usePound = true;\n        }\n        num = parseInt(col,16);\n        r = (num >> 16) + amt;\n        if (r > 255) r = 255;\n        else if  (r < 0) r = 0;\n\n        b = ((num >> 8) & 0x00FF) + amt;\n        if (b > 255) b = 255;\n        else if  (b < 0) b = 0;\n\n        g = (num & 0x0000FF) + amt;\n        if (g > 255) g = 255;\n        else if (g < 0) g = 0;\n\n        return (usePound?'#':'') + (g | (b << 8) | (r << 16)).toString(16);\n    }\n\n    d3.json('data.json', function(error, data) {\n        var g,\n            drag,\n            texts,\n            rects,\n            width,\n            height,\n            glinks,\n            linksData = [],\n            currentElement;\n\n        function dragstarted() {            \n            d3.event.sourceEvent.stopPropagation();\n        }\n        function dragmove(d) {            \n            var x = d3.event.x,\n                y = d3.event.y;\n\n            d3.select(this).attr('transform', 'translate(' + x + ', ' + y + ')');\n            links.filter(function (l) {\n                if(l.x === d.x && l.y === d.y) {\n                    l.x = x;\n                    l.y = y;\n                    return true;\n                }\n                return false;\n            }).attr(\"x1\", x).attr(\"y1\", y);\n\n            d.x = x;\n            d.y = y;\n        }\n\n        drag = d3.behavior.drag()\n            .origin(function(d) { return d; })\n            .on(\"dragstart\", dragstarted)\n            .on(\"drag\", dragmove);\n\n        texts = svg.append('g')\n                .attr('class', 'nodes')\n            .selectAll('g')\n                .data(data.functions)\n            .enter().append('g')\n                .attr('class', 'node')\n                .attr('id', function (d) {\n                    return d.memberOf + '-' + d.name;\n                })\n                .attr('transform', function (d) {\n                    return 'translate(' + d.x + ', ' + d.y + ')';\n                })\n                .call(drag)\n            .append('text')\n                .text(function (d) {\n                    return d.name;\n                })\n                .attr('class', 'text')\n                .attr('text-anchor', 'middle')\n                .attr('dy', '-0.050000000000000044em');\n\n        rects = svg.selectAll('.node')\n            .insert('rect', 'text')\n                .attr(\"data-generation\", function (d) {\n                    d.links.forEach(function (id) {\n                        var data = \n                        linksData.push(d);\n                        linksData[linksData.length - 1].targetId = id;\n                        linksData[linksData.length - 1].sourceId = d.memberOf + '-' + d.name;\n                    });\n\n                    d.currentElement = document.getElementById(d.memberOf + '-' + d.name);\n                    d.height = d.currentElement.getBBox().height + 6;\n                    d.width = d.currentElement.getBBox().width + 6;\n                })\n                .attr(\"x\", function (d) {\n                    return -(d.width)/2;\n                })\n                .attr(\"y\", function (d) {\n                    return -(d.height)/2 - 3;\n                })\n                .attr(\"width\", function (d) {\n                    return d.width;\n                })\n                .attr(\"height\", function (d) {\n                    return d.height;\n                })\n                .attr(\"rx\", \"5\")\n                .attr(\"ry\", \"5\")\n                .attr(\"fill\", function (d) {\n                    d.color = data.classes[d.memberOf].color;\n                    return LightenDarkenColor(d.color, 100 );\n                })\n                .attr(\"stroke\", function (d) {\n                    return d.color;\n                });\n\n        links = svg.insert('g', '.nodes')\n                .attr('class', 'links')\n            .selectAll('line')\n                .data(linksData)\n            .enter().append('line')\n                .attr('class', 'link')\n                .attr('data-generation', function (d) {\n                    d.targetElement = document.getElementById(d.targetId);\n                })\n                .attr('x1', function (d) { return d.x; })\n                .attr('y1', function (d) { return d.y; })\n                .attr('x2', function (d) {\n                    return d.targetElement['__data__'].x;\n                })\n                .attr('y2', function (d) {\n                    return d.targetElement['__data__'].y;\n                });\n    });\n}());",
-			"file": "script.js",
-			"file_size": 4929,
-			"file_write_time": 130716666989284376,
-			"settings":
-			{
-				"buffer_size": 4825,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "script2.js",
-			"settings":
-			{
-				"buffer_size": 1806,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -598,11 +555,14 @@
 	],
 	"file_history":
 	[
-		"/C/Sites/GitHub/Documentation-generator/script2.js",
-		"/C/Sites/GitHub/Documentation-generator/data.json",
-		"/C/Sites/GitHub/Documentation-generator/graph.json",
-		"/C/Sites/GitHub/Documentation-generator/index.html",
 		"/C/Sites/GitHub/Documentation-generator/test.html",
+		"/C/Sites/GitHub/Documentation-generator/index.html",
+		"/C/Sites/GitHub/Documentation-generator/graph.json",
+		"/C/Sites/GitHub/Documentation-generator/example-config.json",
+		"/C/Sites/GitHub/Documentation-generator/data.json",
+		"/C/Sites/GitHub/Documentation-generator/script.js",
+		"/C/Sites/GitHub/Documentation-generator/script2.js",
+		"/C/TFS/VeLabs/Development/Eagle/PBI-14438-VeAppsCaptureInUseCurrency/VeApps/Development/ClientSide/JS/Main/PopEvents/PopEvents.js",
 		"/C/Sites/GitHub/Documentation-generator/style.css",
 		"/C/TFS/VeLabs/Development/Eagle/PBI-14438-VeAppsCaptureInUseCurrency/VeApps/Development/ClientSide/karma.conf.js",
 		"/C/TFS/VeLabs/Development/Eagle/PBI-14438-VeAppsCaptureInUseCurrency/VeApps/Development/ClientSide/Test/Shared/Classes/SessionTest.js",
@@ -705,7 +665,6 @@
 		"/C/Users/fbarbare/AppData/Local/Temp/Temp1_jquery-sizzle-2.1.1-jquery.2.1.2-14-gc5f386e.zip/jquery-sizzle-c5f386e/src/sizzle.js",
 		"/C/TFS/VeLabs/Development/Eagle/PBI-14438-VeAppsCaptureInUseCurrency/VeApps/Development/ClientSide/JS/Main/Capture/VEjQuery.js",
 		"/C/TFS/VeLabs/Development/Eagle/PBI-14438-VeAppsCaptureInUseCurrency/VeApps/Development/ClientSide/JS/Main/Capture/FormManager.js",
-		"/C/TFS/VeLabs/Development/Eagle/PBI-14438-VeAppsCaptureInUseCurrency/VeApps/Development/ClientSide/JS/Main/PopEvents/PopEvents.js",
 		"/C/TFS/VeLabs/Development/Eagle/PBI-14438-VeAppsCaptureInUseCurrency/VeApps/Development/ClientSide/JS/Main/AppState/Settings/SettingsManagerFooter.js",
 		"/C/TFS/VeLabs/Development/Eagle/PBI-14438-VeAppsCaptureInUseCurrency/VeApps/Development/ClientSide/JS/Shared/Utils/Array.js",
 		"/C/TFS/VeLabs/Development/Eagle/PBI-14438-VeAppsCaptureInUseCurrency/VeApps/Development/ClientSide/JS/GenieCustomJS/Utils.js",
@@ -723,9 +682,7 @@
 		"/C/TFS/VeLabs/Development/Eagle/PBI-14438-VeAppsCaptureInUseCurrency/VeApps/Development/ClientSide/installKarma.bat",
 		"/C/Sites/GitHub/recruitment/JS/init.js",
 		"/C/Sites/GitHub/recruitment/mappings.js",
-		"/C/Sites/GitHub/recruitment/index.html",
-		"/C/Sites/GitHub/recruitment/Test/Classes/DataReporter.js",
-		"/C/Sites/GitHub/recruitment/JS/Classes/SendData.js"
+		"/C/Sites/GitHub/recruitment/index.html"
 	],
 	"find":
 	{
@@ -913,155 +870,8 @@
 	"groups":
 	[
 		{
-			"selected": 3,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "style.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 662,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								604,
-								604
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "graph.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 257,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								39,
-								39
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "data.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 601,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "script.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4825,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2735,
-								2735
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1519.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "script2.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1806,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1182,
-								1182
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
 			]
 		}
 	],

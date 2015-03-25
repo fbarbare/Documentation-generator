@@ -1,10 +1,7 @@
 (function(){
-    var width = window.innerWidth,
+    var svg,
+        width = window.innerWidth,
         height = window.innerHeight;
-
-    var svg = d3.select('body').append('svg')
-        .attr('width', width)
-        .attr('height', height);
 
     function LightenDarkenColor(col, amt) {
         var b,
@@ -33,74 +30,89 @@
         return (usePound?'#':'') + (g | (b << 8) | (r << 16)).toString(16);
     }
 
+    svg = d3.select('body').append('svg')
+        .attr('width', width)
+        .attr('height', height);
+
     d3.json('data.json', function(error, data) {
         var g,
             drag,
+            force,
+            nodes,
             texts,
             rects,
             width,
             height,
-            glinks,
+            links,
             linksData = [],
             currentElement;
 
-        function dragstarted() {            
-            d3.event.sourceEvent.stopPropagation();
-        }
-        function dragmove(d) {            
-            var x = d3.event.x,
-                y = d3.event.y;
+    function tick(d) {
+        links.attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; });
 
-            d3.select(this).attr('transform', 'translate(' + x + ', ' + y + ')');
-            links.filter(function (l) {
-                if(l.source.x === d.x && l.source.y === d.y) {
-                    l.source.x = x;
-                    l.source.y = y;
-                    return true;
-                }
-                return false;
-            }).attr("x1", x).attr("y1", y);
-            links.filter(function (l) {
-                if(l.target.x === d.x && l.target.y === d.y) {
-                    l.target.x = x;
-                    l.target.y = y;
-                    return true;
-                }
-                return false;
-            }).attr("x2", x).attr("y2", y);
+        nodes.attr("cx", function(d) { return d.x; })
+            .attr("cy", function(d) { return d.y; });
+    }
+    function dragstarted() {
+        d3.event.sourceEvent.stopPropagation();
+    }
+    function dragmove(d) {
+        var x = d3.event.x,
+            y = d3.event.y;
 
-            d.x = x;
-            d.y = y;
-        }
+        d3.select(this).attr('transform', 'translate(' + x + ', ' + y + ')');
+        links.filter(function (l) {
+            if(l.source.x === d.x && l.source.y === d.y) {
+                l.source.x = x;
+                l.source.y = y;
+                return true;
+            }
+            return false;
+        }).attr("x1", x).attr("y1", y);
+        links.filter(function (l) {
+            if(l.target.x === d.x && l.target.y === d.y) {
+                l.target.x = x;
+                l.target.y = y;
+                return true;
+            }
+            return false;
+        }).attr("x2", x).attr("y2", y);
+
+        d.x = x;
+        d.y = y;
+    }
+
+        force = d3.layout.force()
+            .size([width, height])
+            .charge(-400)
+            .linkDistance(40)
+            // .on("tick", tick);
 
         drag = d3.behavior.drag()
             .origin(function(d) { return d; })
             .on("dragstart", dragstarted)
             .on("drag", dragmove);
 
-        texts = svg.append('g')
+        nodes = svg.append('g')
                 .attr('class', 'nodes')
             .selectAll('g')
                 .data(data.functions)
             .enter().append('g')
                 .attr('class', 'node')
-                .attr('id', function (d) {
-                    return d.memberOf + '-' + d.name;
-                })
-                .attr('transform', function (d) {
-                    return 'translate(' + d.x + ', ' + d.y + ')';
-                })
-                .call(drag)
-            .append('text')
-                .text(function (d) {
-                    return d.name;
-                })
+                .attr('id', function (d) { return d.memberOf + '-' + d.name; })
+                .attr('transform', function (d) { return 'translate(' + d.x + ', ' + d.y + ')'; })
+                .call(drag);
+
+        texts = nodes.append('text')
+                .text(function (d) { return d.name; })
                 .attr('class', 'text')
                 .attr('text-anchor', 'middle')
                 .attr('dy', '-0.050000000000000044em');
 
-        rects = svg.selectAll('.node')
-            .insert('rect', 'text')
+        rects = nodes.insert('rect', 'text')
                 .attr("data-generation", function (d) {
                     d.links.forEach(function (id) {
                         var data = {
@@ -122,27 +134,23 @@
                     d.height = d.currentElement.getBBox().height + 6;
                     d.width = d.currentElement.getBBox().width + 6;
                 })
-                .attr("x", function (d) {
-                    return -(d.width)/2;
-                })
-                .attr("y", function (d) {
-                    return -(d.height)/2 - 3;
-                })
-                .attr("width", function (d) {
-                    return d.width;
-                })
-                .attr("height", function (d) {
-                    return d.height;
-                })
+                .attr("x", function (d) { return -(d.width)/2; })
+                .attr("y", function (d) { return -(d.height)/2 - 3; })
+                .attr("width", function (d) { return d.width; })
+                .attr("height", function (d) { return d.height; })
                 .attr("rx", "5")
                 .attr("ry", "5")
                 .attr("fill", function (d) {
                     d.color = data.classes[d.memberOf].color;
                     return LightenDarkenColor(d.color, 100 );
                 })
-                .attr("stroke", function (d) {
-                    return d.color;
-                });
+                .attr("stroke", function (d) { return d.color; });
+
+        linksData.forEach(function (d) {
+            d.target.element = document.getElementById(d.target.id);
+            d.target.x = d.target.element['__data__'].x;
+            d.target.y = d.target.element['__data__'].y;
+        });
 
         links = svg.insert('g', '.nodes')
                 .attr('class', 'links')
@@ -150,18 +158,14 @@
                 .data(linksData)
             .enter().append('line')
                 .attr('class', 'link')
-                .attr('data-generation', function (d) {
-                    d.target.element = document.getElementById(d.target.id);
-                    d.target.x = d.target.element['__data__'].x;
-                    d.target.y = d.target.element['__data__'].y;
-                })
                 .attr('x1', function (d) { return d.source.x; })
                 .attr('y1', function (d) { return d.source.y; })
-                .attr('x2', function (d) {
-                    return d.target.x;
-                })
-                .attr('y2', function (d) {
-                    return d.target.y;
-                });
+                .attr('x2', function (d) { return d.target.x; })
+                .attr('y2', function (d) { return d.target.y; });
+
+        force
+            .nodes(data.functions)
+            .links(linksData)
+            .start();
     });
 }());

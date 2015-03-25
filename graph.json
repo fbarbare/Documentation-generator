@@ -1,29 +1,63 @@
 {
-	"nodes":[
+	"groups": {
+		"Test": {
+			"color": "#0000FF"
+		},
+		"CaptureData": {
+			"color": "#fff000"
+		},
+		"SendDataReceiver": {
+			"color": "#ff0000"
+		}
+	},
+	"nodes": [
 		{
-			"x":444,
-			"y":275
-		},{
-			"x":444,
-			"y":378
-		},{
-			"x":600,
-			"y":275
-		},{
-			"x":444,
-			"y":230
+			"name": "Constructor",
+			"group": "Test"
+		}, {
+			"name": "Constructor",
+			"group": "CaptureData"
+		}, {
+			"name": "function1",
+			"group": "CaptureData"
+		}, {
+			"name": "Constructor",
+			"group": "SendDataReceiver"
+		}, {
+			"name": "sendData",
+			"group": "SendDataReceiver"
 		}
 	],
-	"links":[
+	"links": [
 		{
-			"source":1,
-			"target":0
-		},{
-			"source":2,
-			"target":0
-		},{
-			"source":3,
-			"target":0
+			"source": 1,
+			"target": 0,
+			"value":1
+		},
+		{
+			"source": 2,
+			"target": 0,
+			"value":1
+		},
+		{
+			"source": 3,
+			"target": 0,
+			"value":1
+		},
+		{
+			"source": 4,
+			"target": 0,
+			"value":1
+		},
+		{
+			"source": 2,
+			"target": 4,
+			"value":100
+		},
+		{
+			"source": 4,
+			"target": 3,
+			"value":1
 		}
 	]
 }
