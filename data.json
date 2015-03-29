@@ -1,62 +1,118 @@
 {
-	"config": {
-		"margin": {
-			"top": 20,
-			"right": 20,
-			"bottom": 20,
-			"left": 20
-		}
-	},
-	"groups": {
-		"Test": {
-			"color": "#0000FF",
-	        "weight": 0.7,
-	        "x": 0.2,
-	        "y": 0.2
-		},
-		"CaptureData": {
-			"color": "#FFF000",
-	        "weight": 0.7,
-	        "x": 0.2,
-	        "y": 0.2
-		},
-		"SendDataReceiver": {
-			"color": "#FF0000",
-	        "weight": 0.7,
-	        "x": 0.2,
-	        "y": 0.2
-		}
-	},
 	"nodes": {
-		"Test": {
-			"name": "constructor",
-			"group": "Test",
-			"linkedTo": [],
-			"linkedBy": ["CaptureData", "SendDataReceiver"]
+		"Fauchelevent": {
+			"name": "Fauchelevent",
+			"type": "group0",
+			"depends": ["Myriel"],
+			"dependedOnBy": ["OldMan"],
+			"positionConstraints": []
 		},
-		"CaptureData": {
-			"name": "constructor",
-			"group": "CaptureData",
-			"linkedTo": [],
-			"linkedBy": []
+		"Myriel": {
+			"name": "Myriel",
+			"type": "group0",
+			"depends": ["Napoleon"],
+			"dependedOnBy": ["Fauchelevent"],
+			"positionConstraints": []
 		},
-		"CaptureData.function1": {
-			"name": "function1",
-			"group": "CaptureData",
-			"linkedTo": [],
-			"linkedBy": ["SendDataReceiver.sendData"]
+		"Napoleon": {
+			"name": "Napoleon",
+			"type": "group0",
+			"depends": ["Baptistine"],
+			"dependedOnBy": ["Myriel"],
+			"positionConstraints": []
 		},
-		"SendDataReceiver": {
-			"name": "constructor",
-			"group": "SendDataReceiver",
-			"linkedTo": [],
-			"linkedBy": []
+		"Baptistine": {
+			"name": "Baptistine",
+			"type": "group1",
+			"depends": ["Magloire"],
+			"dependedOnBy": ["Napoleon"],
+			"positionConstraints": []
 		},
-		"SendDataReceiver.sendData": {
-			"name": "sendData",
-			"group": "SendDataReceiver",
-			"linkedTo": [],
-			"linkedBy": []
+		"Magloire": {
+			"name": "Magloire",
+			"type": "group1",
+			"depends": ["CountessdeLo"],
+			"dependedOnBy": ["Baptistine"],
+			"positionConstraints": []
+		},
+		"CountessdeLo": {
+			"name": "CountessdeLo",
+			"type": "group1",
+			"depends": ["Geborand"],
+			"dependedOnBy": ["Magloire"],
+			"positionConstraints": []
+		},
+		"Geborand": {
+			"name": "Geborand",
+			"type": "group1",
+			"depends": ["Champtercier"],
+			"dependedOnBy": ["CountessdeLo"],
+			"positionConstraints": []
+		},
+		"Champtercier": {
+			"name": "Champtercier",
+			"type": "group1",
+			"depends": ["Cravatte"],
+			"dependedOnBy": ["Geborand"],
+			"positionConstraints": []
+		},
+		"Cravatte": {
+			"name": "Cravatte",
+			"type": "group1",
+			"depends": ["Count"],
+			"dependedOnBy": ["Champtercier"],
+			"positionConstraints": []
+		},
+		"Count": {
+			"name": "Count",
+			"type": "group2",
+			"depends": ["OldMan"],
+			"dependedOnBy": ["Cravatte"],
+			"positionConstraints": [{
+				"weight": 0.7,
+				"x": 76.60000000000001,
+				"y": 152
+			}]
+		},
+		"OldMan": {
+			"name": "OldMan",
+			"type": "group2",
+			"depends": ["Fauchelevent"],
+			"dependedOnBy": ["Count"],
+			"positionConstraints": [{
+				"weight": 0.7,
+				"x": 76.60000000000001,
+				"y": 152
+			}]
+		}
+	},
+	"categories": {
+		"group0": {
+			"key": "group0:",
+			"type": "group0",
+			"typeName": "Group 0",
+			"fillColor": "#96d7cc",
+			"strokeColor": "#55bdab",
+			"color": "#F00000",
+			"count": 3
+		},
+		"group1": {
+			"key": "group1:",
+			"type": "group1",
+			"typeName": "Group 1",
+			"fillColor": "#ffffc3",
+			"strokeColor": "#ffff53",
+			"color": "#0F0000",
+			"count": 10
+		},
+		"group2": {
+			"key": "group2:",
+			"type": "group2",
+			"typeName": "Group 2",
+			"fillColor": "#c7c4df",
+			"strokeColor": "#8780bb",
+			"color": "#00F000",
+			"count": 14
 		}
 	}
 }

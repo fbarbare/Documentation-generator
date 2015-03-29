@@ -1,0 +1,39 @@
+{
+	"title": "Documentation generator",
+	"margin": {
+		"top": 0,
+		"right": 0,
+		"bottom": 0,
+		"left": 0
+	},
+	"ticksWithoutCollisions": 50,
+	"linkDistance": 150,
+	"linkStrength": 0.1,
+	"charge": -400,
+	"mouseoutTime": 150,
+	"labelPadding": {
+		"top": 2,
+		"right": 3,
+		"bottom": 2,
+		"left": 3
+	},
+	"labelMargin": {
+		"top": 0,
+		"right": 0,
+		"bottom": 0,
+		"left": 0
+	},
+	"size": {
+		"width": "auto",
+		"height": "auto"
+	},
+    "legend": {
+        "rectWidth"   : 12,
+        "rectHeight"  : 12,
+        "xOffset"     : 10,
+        "yOffset"     : 30,
+        "xOffsetText" : 30,
+        "yOffsetText" : 40,
+        "lineHeight"  : 15
+    }
+}
