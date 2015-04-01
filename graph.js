@@ -11,6 +11,7 @@ var data,
 var showingDocs       = false,
     docsClosePadding  = 8,
     desiredDocsHeight = 300;
+
 function getElementsByDataAttribute(parentElement, key, value) {
     if (parentElement !== null) {
         var allChild = parentElement.getElementsByTagName('*'),
@@ -23,6 +24,19 @@ function getElementsByDataAttribute(parentElement, key, value) {
             }
         }
         return arrayElement.length > 0 ? arrayElement : null;
+    }
+}
+function hasClassName(element, value) {
+    return element.classList.contains(value);
+}
+function addClassName(element, value) {
+    if (!hasClassName(element, value)) {
+        element.classList.add(value);
+    }
+}
+function removeClassName(element, value) {
+    if (hasClassName(element, value)) {
+        element.classList.remove(value);
     }
 }
 
@@ -48,6 +62,52 @@ function buildLinks(nodes, config) {
     return links;
 }
 
+function setElementsAsActive(key) {
+    var nodes = node[0],
+        lines = line[0],
+        i;
+
+    for (i = nodes.length - 1; i >= 0; i--) {
+        removeClassName(nodes[i], 'inactive');
+    }
+    for (i = lines.length - 1; i >= 0; i--) {
+        removeClassName(lines[i], 'inactive');
+    }
+}
+function setElementsAsInactive(key) {
+    var nodes = node[0],
+        lines = line[0],
+        i;
+
+    for (i = nodes.length - 1; i >= 0; i--) {
+        if(nodes[i]['__data__'].type !== key) {
+            addClassName(nodes[i], 'inactive');
+        }
+    }
+    for (i = lines.length - 1; i >= 0; i--) {
+        if(lines[i]['__data__'].source.type !== key && lines[i]['__data__'].target.type !== key) {
+            addClassName(lines[i], 'inactive');
+        }
+    }
+}
+
+function onLegendMouseover(event) {
+    var element = event.currentTarget,
+        key = element.getAttribute('data-legend-key');
+
+    if (key) {
+        setElementsAsInactive(key);
+    }
+}
+function onLegendMouseout(event) {
+    var element = event.currentTarget,
+        key = element.getAttribute('data-legend-key');
+
+    if (key) {
+        setElementsAsActive(key);
+    }
+}
+
 function generateLegend(categories, config) {
     var legendTemplate = document.getElementById(config.legend.templateId),
         template = legendTemplate.cloneNode(true),
@@ -62,7 +122,11 @@ function generateLegend(categories, config) {
     max = categories.length;
     for (key in categories) {
         currentClone = template.cloneNode(true);
+
         currentClone.setAttribute('data-legend-key', key);
+        currentClone.addEventListener('mouseover', onLegendMouseover);
+        currentClone.addEventListener('mouseout', onLegendMouseout);
+
         elements = getElementsByDataAttribute(currentClone, 'data-legend');
         for (j = elements.length - 1; j >= 0; j--) {
             switch (elements[j].getAttribute('data-legend')) {
@@ -104,7 +168,6 @@ function generateLegend(categories, config) {
             glow,
             drag,
             svg;
-
 
         data = json;
         data.links = buildLinks(data.nodes, config);
