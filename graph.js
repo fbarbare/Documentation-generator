@@ -11,7 +11,6 @@ var data,
 var showingDocs       = false,
     docsClosePadding  = 8,
     desiredDocsHeight = 300;
-<<<<<<< HEAD
 
 function getElementsByDataAttribute(parentElement, key, value) {
     if (parentElement !== null) {
@@ -40,8 +39,6 @@ function removeClassName(element, value) {
         element.classList.remove(value);
     }
 }
-=======
->>>>>>> parent of bf76fd3... set all structure + start library/framework
 
 function buildLinks(nodes) {
     var key,
@@ -65,7 +62,6 @@ function buildLinks(nodes) {
     return links;
 }
 
-<<<<<<< HEAD
 function setElementsAsActive(key) {
     var nodes = node[0],
         lines = line[0],
@@ -148,8 +144,6 @@ function generateLegend(categories, config) {
     }
 }
 
-=======
->>>>>>> parent of bf76fd3... set all structure + start library/framework
 (function(){
     d3.json('config.json', function(json) {
         config = json;
