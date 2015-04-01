@@ -40,7 +40,7 @@ function removeClassName(element, value) {
     }
 }
 
-function buildLinks(nodes) {
+function buildLinks(nodes, config) {
     var key,
         link,
         object,
@@ -146,12 +146,15 @@ function generateLegend(categories, config) {
 
 (function(){
     d3.json('config.json', function(json) {
+        var wrapper;
         config = json;
+
+        wrapper = document.querySelector(config.wrapper);
         if(config.size.width === 'auto'){
-            config.size.width = window.innerWidth;
+            config.size.width = wrapper.offsetWidth;
         }
         if(config.size.height === 'auto'){
-            config.size.height = window.innerHeight;
+            config.size.height = wrapper.offsetHeight;
         }
     });
 
@@ -159,6 +162,7 @@ function generateLegend(categories, config) {
         var draggedThreshold,
             mouseoutTimeout,
             nodeRect,
+            wrapper,
             legend,
             force,
             glow,
@@ -166,7 +170,7 @@ function generateLegend(categories, config) {
             svg;
 
         data = json;
-        data.links = buildLinks(data.nodes);
+        data.links = buildLinks(data.nodes, config);
         data.nodeValues = d3.values(data.nodes);
 
         force = d3.layout.force()
@@ -178,7 +182,7 @@ function generateLegend(categories, config) {
             .charge(config.charge)
             .on('tick', tick);
 
-        svg = d3.select('body').append('svg')
+        svg = d3.select(config.wrapper).append('svg')
             .attr('width' , config.size.width  + config.margin.left + config.margin.right)
             .attr('height', config.size.height + config.margin.top  + config.margin.bottom)
           .append('g')
@@ -222,37 +226,39 @@ function generateLegend(categories, config) {
           .enter().append('feMergeNode')
             .attr('in', String);
 
-        legend = svg.append('g')
-            .attr('class', 'legend')
-            .attr('x', 0)
-            .attr('y', 0)
-          .selectAll('.category')
-            .data(d3.values(data.categories))
-          .enter().append('g')
-            .attr('class', 'category');
+        generateLegend(data.categories, config);
 
-        legend.append('rect')
-            .attr('x', config.legend.xOffset)
-            .attr('y', function(d, i) {
-                return config.legend.yOffset + i * config.legend.lineHeight;
-            })
-            .attr('height', config.legend.rectHeight)
-            .attr('width' , config.legend.rectWidth)
-            .attr('fill'  , function(d) {
-                return d.fillColor;
-            })
-            .attr('stroke', function(d) {
-                return d.strokeColor;
-            });
+        // legend = svg.append('g')
+        //     .attr('class', 'legend')
+        //     .attr('x', 0)
+        //     .attr('y', 0)
+        //   .selectAll('.category')
+        //     .data(d3.values(data.categories))
+        //   .enter().append('g')
+        //     .attr('class', 'category');
 
-        legend.append('text')
-            .attr('x', config.legend.xOffsetText)
-            .attr('y', function(d, i) {
-                return config.legend.yOffsetText + i * config.legend.lineHeight;
-            })
-            .text(function(d) {
-                return d.typeName + (d.group ? ': ' + d.group : '');
-            });
+        // legend.append('rect')
+        //     .attr('x', config.legend.xOffset)
+        //     .attr('y', function(d, i) {
+        //         return config.legend.yOffset + i * config.legend.lineHeight;
+        //     })
+        //     .attr('height', config.legend.rectHeight)
+        //     .attr('width' , config.legend.rectWidth)
+        //     .attr('fill'  , function(d) {
+        //         return d.fillColor;
+        //     })
+        //     .attr('stroke', function(d) {
+        //         return d.strokeColor;
+        //     });
+
+        // legend.append('text')
+        //     .attr('x', config.legend.xOffsetText)
+        //     .attr('y', function(d, i) {
+        //         return config.legend.yOffsetText + i * config.legend.lineHeight;
+        //     })
+        //     .text(function(d) {
+        //         return d.typeName + (d.group ? ': ' + d.group : '');
+        //     });
 
         line = svg.append('g').selectAll('.link')
             .data(force.links())
