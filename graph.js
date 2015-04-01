@@ -43,16 +43,29 @@ function removeClassName(element, value) {
 function buildLinks(nodes, config) {
     var key,
         link,
-        object,
+        target,
+        source,
         dependencyIndex,
         links = [];
 
     for (key in nodes) {
-        object = nodes[key];
-        for (dependencyIndex in object.depends) {
+        target = nodes[key];
+        target.dependsGroups = [];
+
+        for (dependencyIndex in target.depends) {
+            source = nodes[target.depends[dependencyIndex]];
+            source.dependsGroups = source.dependsGroups || [];
+
+            if (target.dependsGroups.indexOf(source.type) === -1) {
+                target.dependsGroups.push(source.type);
+            }
+            if (source.dependsGroups.indexOf(target.type) === -1) {
+                source.dependsGroups.push(target.type);
+            }
+
             link = {
-                source : nodes[object.depends[dependencyIndex]],
-                target : object
+                source : source,
+                target : target
             };
             link.strength = config.linkStrength;
             links.push(link);
@@ -80,7 +93,7 @@ function setElementsAsInactive(key) {
         i;
 
     for (i = nodes.length - 1; i >= 0; i--) {
-        if(nodes[i]['__data__'].type !== key) {
+        if(nodes[i]['__data__'].type !== key && nodes[i]['__data__'].dependsGroups.indexOf(key) === -1) {
             addClassName(nodes[i], 'inactive');
         }
     }
