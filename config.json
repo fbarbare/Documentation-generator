@@ -1,11 +1,10 @@
 {
-	"wrapper": "#graph",
 	"title": "Documentation generator",
 	"margin": {
-		"top": 80,
-		"right": 80,
-		"bottom": 80,
-		"left": 80
+		"top": 0,
+		"right": 0,
+		"bottom": 0,
+		"left": 0
 	},
 	"ticksWithoutCollisions": 50,
 	"linkDistance": 150,
@@ -29,7 +28,6 @@
 		"height": "auto"
 	},
     "legend": {
-    	"templateId"  : "legend-template",
         "rectWidth"   : 12,
         "rectHeight"  : 12,
         "xOffset"     : 10,

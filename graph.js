@@ -11,6 +11,7 @@ var data,
 var showingDocs       = false,
     docsClosePadding  = 8,
     desiredDocsHeight = 300;
+<<<<<<< HEAD
 
 function getElementsByDataAttribute(parentElement, key, value) {
     if (parentElement !== null) {
@@ -39,8 +40,10 @@ function removeClassName(element, value) {
         element.classList.remove(value);
     }
 }
+=======
+>>>>>>> parent of bf76fd3... set all structure + start library/framework
 
-function buildLinks(nodes, config) {
+function buildLinks(nodes) {
     var key,
         link,
         object,
@@ -62,6 +65,7 @@ function buildLinks(nodes, config) {
     return links;
 }
 
+<<<<<<< HEAD
 function setElementsAsActive(key) {
     var nodes = node[0],
         lines = line[0],
@@ -144,17 +148,16 @@ function generateLegend(categories, config) {
     }
 }
 
+=======
+>>>>>>> parent of bf76fd3... set all structure + start library/framework
 (function(){
     d3.json('config.json', function(json) {
-        var wrapper;
         config = json;
-
-        wrapper = document.querySelector(config.wrapper);
         if(config.size.width === 'auto'){
-            config.size.width = wrapper.offsetWidth;
+            config.size.width = window.innerWidth;
         }
         if(config.size.height === 'auto'){
-            config.size.height = wrapper.offsetHeight;
+            config.size.height = window.innerHeight;
         }
     });
 
@@ -162,7 +165,6 @@ function generateLegend(categories, config) {
         var draggedThreshold,
             mouseoutTimeout,
             nodeRect,
-            wrapper,
             legend,
             force,
             glow,
@@ -170,7 +172,7 @@ function generateLegend(categories, config) {
             svg;
 
         data = json;
-        data.links = buildLinks(data.nodes, config);
+        data.links = buildLinks(data.nodes);
         data.nodeValues = d3.values(data.nodes);
 
         force = d3.layout.force()
@@ -182,7 +184,7 @@ function generateLegend(categories, config) {
             .charge(config.charge)
             .on('tick', tick);
 
-        svg = d3.select(config.wrapper).append('svg')
+        svg = d3.select('body').append('svg')
             .attr('width' , config.size.width  + config.margin.left + config.margin.right)
             .attr('height', config.size.height + config.margin.top  + config.margin.bottom)
           .append('g')
@@ -226,39 +228,37 @@ function generateLegend(categories, config) {
           .enter().append('feMergeNode')
             .attr('in', String);
 
-        generateLegend(data.categories, config);
+        legend = svg.append('g')
+            .attr('class', 'legend')
+            .attr('x', 0)
+            .attr('y', 0)
+          .selectAll('.category')
+            .data(d3.values(data.categories))
+          .enter().append('g')
+            .attr('class', 'category');
 
-        // legend = svg.append('g')
-        //     .attr('class', 'legend')
-        //     .attr('x', 0)
-        //     .attr('y', 0)
-        //   .selectAll('.category')
-        //     .data(d3.values(data.categories))
-        //   .enter().append('g')
-        //     .attr('class', 'category');
+        legend.append('rect')
+            .attr('x', config.legend.xOffset)
+            .attr('y', function(d, i) {
+                return config.legend.yOffset + i * config.legend.lineHeight;
+            })
+            .attr('height', config.legend.rectHeight)
+            .attr('width' , config.legend.rectWidth)
+            .attr('fill'  , function(d) {
+                return d.fillColor;
+            })
+            .attr('stroke', function(d) {
+                return d.strokeColor;
+            });
 
-        // legend.append('rect')
-        //     .attr('x', config.legend.xOffset)
-        //     .attr('y', function(d, i) {
-        //         return config.legend.yOffset + i * config.legend.lineHeight;
-        //     })
-        //     .attr('height', config.legend.rectHeight)
-        //     .attr('width' , config.legend.rectWidth)
-        //     .attr('fill'  , function(d) {
-        //         return d.fillColor;
-        //     })
-        //     .attr('stroke', function(d) {
-        //         return d.strokeColor;
-        //     });
-
-        // legend.append('text')
-        //     .attr('x', config.legend.xOffsetText)
-        //     .attr('y', function(d, i) {
-        //         return config.legend.yOffsetText + i * config.legend.lineHeight;
-        //     })
-        //     .text(function(d) {
-        //         return d.typeName + (d.group ? ': ' + d.group : '');
-        //     });
+        legend.append('text')
+            .attr('x', config.legend.xOffsetText)
+            .attr('y', function(d, i) {
+                return config.legend.yOffsetText + i * config.legend.lineHeight;
+            })
+            .text(function(d) {
+                return d.typeName + (d.group ? ': ' + d.group : '');
+            });
 
         line = svg.append('g').selectAll('.link')
             .data(force.links())

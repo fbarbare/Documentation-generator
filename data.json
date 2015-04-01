@@ -90,7 +90,7 @@
 		"group0": {
 			"key": "group0:",
 			"type": "group0",
-			"name": "Group 0",
+			"typeName": "Group 0",
 			"fillColor": "#96d7cc",
 			"strokeColor": "#55bdab",
 			"color": "#F00000",
@@ -99,7 +99,7 @@
 		"group1": {
 			"key": "group1:",
 			"type": "group1",
-			"name": "Group 1",
+			"typeName": "Group 1",
 			"fillColor": "#ffffc3",
 			"strokeColor": "#ffff53",
 			"color": "#0F0000",
@@ -108,7 +108,7 @@
 		"group2": {
 			"key": "group2:",
 			"type": "group2",
-			"name": "Group 2",
+			"typeName": "Group 2",
 			"fillColor": "#c7c4df",
 			"strokeColor": "#8780bb",
 			"color": "#00F000",

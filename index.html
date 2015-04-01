@@ -6,36 +6,44 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <div id="content" class="content">
-        
-            <div id="menu" class="menu">
-                <div class="menu-content">
-                    <div id="legend" class="legend-wrapper">
-                        <h2>Legend</h2>
-                        <ul class="legend-list">
-                            <li id="legend-template" class="legend-item">
-                                <span class="legend-square" data-legend="square"></span>
-                                <span class="legend-text" data-legend="name" ></span>
-                            </li>
-                        </ul>
-                                 
-                    </div>
-                    <ul class="menu-list">
+    	<div id="menu" class="menu">
+    		<div class="menu-content">
+    			<div id="legend" class="legend-wrapper">
+                    <h2>Legend</h2>
+                    <ul class="legend-list">
                         <li>
-                            <a href="">View documentation</a>
+                            <span class="legend-square"></span>
+                            <span class="legend-text">Group 0</span>
+                        </li>
+                        <li>
+                            <span class="legend-square"></span>
+                            <span class="legend-text">Group 0</span>
+                        </li>
+                        <li>
+                            <span class="legend-square"></span>
+                            <span class="legend-text">Group 0</span>
+                        </li>
+                        <li>
+                            <span class="legend-square"></span>
+                            <span class="legend-text">Group 0</span>
                         </li>
                     </ul>
+                             
                 </div>
-            </div>
+    			<ul class="menu-list">
+    				<li>
+    					<a href="">View documentation</a>
+    				</li>
+    			</ul>
+    		</div>
+    	</div>
 
-
-            <div class="page-content">
-                <header>
-                    <div class="btn avoid-selecting" data-menu-button="content">Docs</div>
-                    <h1>Florians WebSite</h1>
-                </header>
-
-                <div id="graph" class="graph"></div>
+        <div id="content">
+            <div id="header">
+                <div class="menu-button-container">
+                    <div class="menu-button icon" data-menu-button="menu">☰</div>
+                </div>
+                <div class="title">Title of my page</div>
             </div>
 
 
@@ -45,7 +53,7 @@
         <script src="http://d3js.org/d3.v3.js"></script>
         <script src="geometry.js"></script>
         <script src="graph.js"></script>
-        <script data-main="js/application/script.js" src="js/vendors/requirejs/2.1.15/require.js"></script>
+        <script src="script.js"></script>
         
     </body>
 </html>
