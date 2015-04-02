@@ -1,8 +1,9 @@
 define([
 	'plugin/CSS/namespace',
+	'Document',
 	'Array',
 	'display/CSS'
-], function(namespace, Array, CSS) {
+], function(namespace, doc, Array, CSS) {
 
 	namespace.AddClassOnClick = function (dataAttribute, activeClass) {
 		this.MENU_BUTTON_DATA_ATTR = dataAttribute;
@@ -11,7 +12,7 @@ define([
 
 	namespace.AddClassOnClick.prototype.handleEvent = function (event) {
 		var id = event.currentTarget.getAttribute(this.MENU_BUTTON_DATA_ATTR),
-			menu = document.getElementById(id);
+			menu = doc.getElementById(id);
 
 		if (CSS.hasClassName(menu, this.activeClass)) {
 			CSS.removeClassName(menu, this.activeClass);
@@ -22,10 +23,10 @@ define([
 
 	namespace.AddClassOnClick.prototype.init = function () {
 		var i,
-			menuButtons = CSS.getElementsByDataAttribute(document, this.MENU_BUTTON_DATA_ATTR);
+			elements = CSS.getElementsByDataAttribute(doc.body, this.MENU_BUTTON_DATA_ATTR);
 
-		for (i = menuButtons.length - 1; i >= 0; i--) {
-			menuButtons[i].addEventListener('click', this);
+		for (i = elements.length - 1; i >= 0; i--) {
+			elements[i].addEventListener('click', this);
 		}
 	};
 

@@ -50,7 +50,7 @@ function buildLinks(nodes, config) {
 
     for (key in nodes) {
         target = nodes[key];
-        target.dependsGroups = [];
+        target.dependsGroups = target.dependsGroups || [];
 
         for (dependencyIndex in target.depends) {
             source = nodes[target.depends[dependencyIndex]];
@@ -162,6 +162,7 @@ function generateLegend(categories, config) {
         var wrapper;
         config = json;
 
+        config.wrapper = config.wrapper || 'body';
         wrapper = document.querySelector(config.wrapper);
         if(config.size.width === 'auto'){
             config.size.width = wrapper.offsetWidth;
@@ -240,38 +241,6 @@ function generateLegend(categories, config) {
             .attr('in', String);
 
         generateLegend(data.categories, config);
-
-        // legend = svg.append('g')
-        //     .attr('class', 'legend')
-        //     .attr('x', 0)
-        //     .attr('y', 0)
-        //   .selectAll('.category')
-        //     .data(d3.values(data.categories))
-        //   .enter().append('g')
-        //     .attr('class', 'category');
-
-        // legend.append('rect')
-        //     .attr('x', config.legend.xOffset)
-        //     .attr('y', function(d, i) {
-        //         return config.legend.yOffset + i * config.legend.lineHeight;
-        //     })
-        //     .attr('height', config.legend.rectHeight)
-        //     .attr('width' , config.legend.rectWidth)
-        //     .attr('fill'  , function(d) {
-        //         return d.fillColor;
-        //     })
-        //     .attr('stroke', function(d) {
-        //         return d.strokeColor;
-        //     });
-
-        // legend.append('text')
-        //     .attr('x', config.legend.xOffsetText)
-        //     .attr('y', function(d, i) {
-        //         return config.legend.yOffsetText + i * config.legend.lineHeight;
-        //     })
-        //     .text(function(d) {
-        //         return d.typeName + (d.group ? ': ' + d.group : '');
-        //     });
 
         line = svg.append('g').selectAll('.link')
             .data(force.links())
