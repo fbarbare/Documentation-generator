@@ -3,8 +3,8 @@ define([
 	'getNativeObject'
 ], function (namespace, getNativeObject) {
 
-	namespace.Object = getNativeObject('Object');
+	namespace.Date = getNativeObject('Date');
 
-	return namespace.Object;
+	return namespace.Date;
 
 });

@@ -4,6 +4,6 @@ define([
 ], function (namespace) {
 	'use strict';
 	
-	namespace.display = {};
-	return namespace.display;
+	namespace.elements = {};
+	return namespace.elements;
 });
