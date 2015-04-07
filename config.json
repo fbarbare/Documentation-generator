@@ -1,6 +1,10 @@
 {
-	"wrapper": "#graph",
 	"title": "Documentation generator",
+	"wrapper": "#graph",
+	"size": {
+		"width": "auto",
+		"height": "auto"
+	},
 	"margin": {
 		"top": 80,
 		"right": 80,
@@ -12,30 +16,21 @@
 	"linkStrength": 0.1,
 	"charge": -400,
 	"mouseoutTime": 150,
-	"labelPadding": {
-		"top": 2,
-		"right": 3,
-		"bottom": 2,
-		"left": 3
-	},
-	"labelMargin": {
-		"top": 0,
-		"right": 0,
-		"bottom": 0,
-		"left": 0
-	},
-	"size": {
-		"width": "auto",
-		"height": "auto"
+	"label": {
+		"padding": {
+			"top": 2,
+			"right": 3,
+			"bottom": 2,
+			"left": 3
+		},
+		"margin": {
+			"top": 0,
+			"right": 0,
+			"bottom": 0,
+			"left": 0
+		}
 	},
     "legend": {
-    	"templateId"  : "legend-template",
-        "rectWidth"   : 12,
-        "rectHeight"  : 12,
-        "xOffset"     : 10,
-        "yOffset"     : 30,
-        "xOffsetText" : 30,
-        "yOffsetText" : 40,
-        "lineHeight"  : 15
+    	"templateId"  : "legend-template"
     }
 }

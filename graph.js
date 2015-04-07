@@ -12,151 +12,6 @@ var showingDocs       = false,
     docsClosePadding  = 8,
     desiredDocsHeight = 300;
 
-function getElementsByDataAttribute(parentElement, key, value) {
-    if (parentElement !== null) {
-        var allChild = parentElement.getElementsByTagName('*'),
-            arrayElement = new Array(),
-            i = 0;
-
-        for(i = 0; i < allChild.length; i = i + 1){
-            if(allChild[i].hasAttribute(key) && (value === undefined || allChild[i].getAttribute(key) === value)){
-                arrayElement.push(allChild[i])
-            }
-        }
-        return arrayElement.length > 0 ? arrayElement : null;
-    }
-}
-function hasClassName(element, value) {
-    return element.classList.contains(value);
-}
-function addClassName(element, value) {
-    if (!hasClassName(element, value)) {
-        element.classList.add(value);
-    }
-}
-function removeClassName(element, value) {
-    if (hasClassName(element, value)) {
-        element.classList.remove(value);
-    }
-}
-
-function buildLinks(nodes, config) {
-    var key,
-        link,
-        target,
-        source,
-        dependencyIndex,
-        links = [];
-
-    for (key in nodes) {
-        target = nodes[key];
-        target.dependsGroups = target.dependsGroups || [];
-
-        for (dependencyIndex in target.depends) {
-            source = nodes[target.depends[dependencyIndex]];
-            source.dependsGroups = source.dependsGroups || [];
-
-            if (target.dependsGroups.indexOf(source.type) === -1) {
-                target.dependsGroups.push(source.type);
-            }
-            if (source.dependsGroups.indexOf(target.type) === -1) {
-                source.dependsGroups.push(target.type);
-            }
-
-            link = {
-                source : source,
-                target : target
-            };
-            link.strength = config.linkStrength;
-            links.push(link);
-        }
-    }
-
-    return links;
-}
-
-function setElementsAsActive(key) {
-    var nodes = node[0],
-        lines = line[0],
-        i;
-
-    for (i = nodes.length - 1; i >= 0; i--) {
-        removeClassName(nodes[i], 'inactive');
-    }
-    for (i = lines.length - 1; i >= 0; i--) {
-        removeClassName(lines[i], 'inactive');
-    }
-}
-function setElementsAsInactive(key) {
-    var nodes = node[0],
-        lines = line[0],
-        i;
-
-    for (i = nodes.length - 1; i >= 0; i--) {
-        if(nodes[i]['__data__'].type !== key && nodes[i]['__data__'].dependsGroups.indexOf(key) === -1) {
-            addClassName(nodes[i], 'inactive');
-        }
-    }
-    for (i = lines.length - 1; i >= 0; i--) {
-        if(lines[i]['__data__'].source.type !== key && lines[i]['__data__'].target.type !== key) {
-            addClassName(lines[i], 'inactive');
-        }
-    }
-}
-
-function onLegendMouseover(event) {
-    var element = event.currentTarget,
-        key = element.getAttribute('data-legend-key');
-
-    if (key) {
-        setElementsAsInactive(key);
-    }
-}
-function onLegendMouseout(event) {
-    var element = event.currentTarget,
-        key = element.getAttribute('data-legend-key');
-
-    if (key) {
-        setElementsAsActive(key);
-    }
-}
-
-function generateLegend(categories, config) {
-    var legendTemplate = document.getElementById(config.legend.templateId),
-        template = legendTemplate.cloneNode(true),
-        parent = legendTemplate.parentNode,
-        currentClone,
-        elements,
-        max,
-        key,
-        j;
-    
-    template.removeAttribute('id');
-    max = categories.length;
-    for (key in categories) {
-        currentClone = template.cloneNode(true);
-
-        currentClone.setAttribute('data-legend-key', key);
-        currentClone.addEventListener('mouseover', onLegendMouseover);
-        currentClone.addEventListener('mouseout', onLegendMouseout);
-
-        elements = getElementsByDataAttribute(currentClone, 'data-legend');
-        for (j = elements.length - 1; j >= 0; j--) {
-            switch (elements[j].getAttribute('data-legend')) {
-                case 'name':
-                    elements[j].innerHTML = categories[key].name
-                    break;
-                case 'square':
-                    elements[j].style.borderColor = categories[key].strokeColor;
-                    elements[j].style.backgroundColor = categories[key].fillColor;
-                    break;
-            }
-        }
-
-        parent.appendChild(currentClone);
-    }
-}
-
 (function(){
     d3.json('config.json', function(json) {
         var wrapper;
@@ -182,10 +37,6 @@ function generateLegend(categories, config) {
             glow,
             drag,
             svg;
-
-        data = json;
-        data.links = buildLinks(data.nodes, config);
-        data.nodeValues = d3.values(data.nodes);
 
         force = d3.layout.force()
             .nodes(data.nodeValues)
@@ -348,8 +199,8 @@ function generateLegend(categories, config) {
         setTimeout(function() {
             var i;
             node.each(function(d) {
-                var padding  = config.labelPadding,
-                    margin   = config.labelMargin,
+                var padding  = config.label.padding,
+                    margin   = config.label.margin,
                     node   = d3.select(this),
                     text   = node.selectAll('text'),
                     first  = true,

@@ -5,8 +5,8 @@ define([
 	'Object'
 ], function (namespace, getNativeObject, cloneObject, Object) {
 
-	namespace.window = cloneObject(window, window, getNativeObject('window'));
+	namespace.Window = cloneObject(window, window, getNativeObject('window'));
 
-	return namespace.window;
+	return namespace.Window;
 
 });

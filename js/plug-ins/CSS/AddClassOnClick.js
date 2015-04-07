@@ -3,8 +3,10 @@ define([
 	'Document',
 	'Array',
 	'elements/getElements',
-	'elements/classNames'
-], function(namespace, doc, Array, getElements, classNames) {
+	'elements/classNames',
+	'elements/attributes',
+	'events/eventListeners'
+], function(namespace, doc, Array, getElements, classNames, attributes, eventListeners) {
 
 	namespace.AddClassOnClick = function (dataAttribute, activeClass) {
 		this.dataAttribute = dataAttribute;
@@ -12,7 +14,7 @@ define([
 	};
 
 	namespace.AddClassOnClick.prototype.handleEvent = function (event) {
-		var id = event.currentTarget.getAttribute(this.dataAttribute),
+		var id = attributes.get(event.currentTarget, this.dataAttribute),
 			menu = getElements.byId(id);
 
 		if (classNames.hasClassName(menu, this.activeClass)) {
@@ -27,7 +29,7 @@ define([
 			elements = getElements.byDataAttribute(doc.body, this.dataAttribute);
 
 		for (i = elements.length - 1; i >= 0; i--) {
-			elements[i].addEventListener('click', this);
+			eventListeners.add(elements[i], 'click', this);
 		}
 	};
 
