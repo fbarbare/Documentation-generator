@@ -1,7 +1,8 @@
 define([
 	'vendor/d3js/3.5.5/d3',
+	'application/graph/Graph',
 	'elements/getElements'
-], function(d3, getElements) {
+], function(d3, Graph, getElements) {
 
 	function buildLinks(nodes, config) {
 	    var key,
@@ -55,6 +56,9 @@ define([
 	        data = json;
 	        data.links = buildLinks(data.nodes, config);
 	        data.nodeValues = d3.values(data.nodes);
+
+	        var graph = new Graph(data, data.categories, config);
+	        graph.create();
 	    });
     });
 

@@ -15,5 +15,4 @@ define([
 	};
 
 	return namespace.Array;
-
 });

@@ -11,8 +11,8 @@ requirejs.config({
 
 requirejs([
 	'plugin/CSS/AddClassOnClick',
-	'application/graph'
-], function (AddClassOnClick, graph) {
+	'application/drawGraph'
+], function (AddClassOnClick, drawGraph) {
 	var mobileMenu = new AddClassOnClick('data-menu-button', 'menu-active');
 	mobileMenu.init();
 });

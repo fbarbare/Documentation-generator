@@ -6,5 +6,4 @@ define([
 	namespace.String = getNativeObject('String');
 
 	return namespace.String;
-
 });

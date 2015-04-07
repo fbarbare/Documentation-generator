@@ -8,5 +8,4 @@ define([
 	namespace.Window = cloneObject(window, window, getNativeObject('window'));
 
 	return namespace.Window;
-
 });

@@ -58,5 +58,4 @@ define([
 	}
 
 	return namespace.cloneObject;
-
 });

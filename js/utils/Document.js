@@ -7,7 +7,5 @@ define([
 
 	namespace.document = cloneObject(document, document, getNativeObject('document'));
 
-	window.newDocument = namespace.document;
 	return namespace.document;
-
 });

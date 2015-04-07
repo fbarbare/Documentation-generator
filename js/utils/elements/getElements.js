@@ -33,7 +33,21 @@ define([
 		}
 	};
 
-	window.getElements = namespace.getElements;
+	namespace.getElements.querySelector = function (parentElement, key) {
+        if (parentElement === document) {
+			return Document.querySelector.call(parentElement, key);
+        } else {
+			return Element.prototype.querySelector.call(parentElement, key);
+        }
+	};
+	namespace.getElements.querySelectorAll = function (parentElement, key) {
+        if (parentElement === document) {
+			return Document.querySelectorAll.call(parentElement, key);
+        } else {
+			return Element.prototype.querySelectorAll.call(parentElement, key);
+        }
+	};
+	
 	return namespace.getElements;
 
 });

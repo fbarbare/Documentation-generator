@@ -6,5 +6,4 @@ define([
 	namespace.Number = getNativeObject('Number');
 
 	return namespace.Number;
-
 });
