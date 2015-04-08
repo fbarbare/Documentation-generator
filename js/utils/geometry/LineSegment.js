@@ -88,7 +88,7 @@ define([
     };
 
     namespace.LineSegment.prototype.offset = function(x, y) {
-        return new geo.LineSegment(
+        return new namespace.LineSegment(
             this.x1 + x, this.y1 + y,
             this.x2 + x, this.y2 + y);
     };

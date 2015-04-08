@@ -10,7 +10,6 @@ define([
 		this.graph = graph;
 		this.config = config;
 
-		this.preventCollision = config.preventCollision || true;
 		this.numTicks = 0;
 	}
 
@@ -64,7 +63,8 @@ define([
 
 	Force.prototype.tick = function (e) {
 		var name,
-			obj;
+			obj,
+			isIE = false;
 
 	    this.numTicks++;
 
@@ -82,7 +82,7 @@ define([
 	        });
 	    }
 
-	    if (this.preventCollision) {
+	    if (this.graph.preventCollision) {
 	        this.preventCollisions();
 	    }
 
@@ -125,14 +125,14 @@ define([
 	};
 
 	Force.prototype.create = function () {
-		force = d3.layout.force()
+		this.graph.force = d3.layout.force()
 			.nodes(this.data.nodeValues)
 			.links(this.data.links)
 			.linkStrength(function(d) { return d.strength; })
-			.size([this.config.width, this.config.height])
+			.size([this.config.size.width, this.config.size.height])
 			.linkDistance(this.config.linkDistance)
 			.charge(this.config.charge)
-			.on('tick', this.tick);
+			.on('tick', this.tick.bind(this));
 	};
 
 	return Force;

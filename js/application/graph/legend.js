@@ -6,43 +6,42 @@ define([
 	'events/eventListeners'
 ], function(getElements, classNames, attributes, nodes, eventListeners) {
 
-	function legend(categories, templateId, nodes, lines) {
+	function Legend(categories, templateId, graph) {
 		this.categories = categories;
 		this.templateId = templateId;
-		this.nodes = nodes;
-		this.lines = lines;
+		this.graph = graph;
 	}
 
-	legend.prototype.setElementsAsActive = function () {
-	    var nodes = this.nodes[0],
-	        lines = this.lines[0],
+	Legend.prototype.setElementsAsActive = function () {
+	    var nodes = this.graph.nodes[0],
+	        lines = this.graph.lines[0],
 	        i;
 
 	    for (i = nodes.length - 1; i >= 0; i--) {
-	        classNames.remove(nodes[i], 'inactive');
+	        classNames.svgRemove(nodes[i], 'inactive');
 	    }
 	    for (i = lines.length - 1; i >= 0; i--) {
-	        classNames.remove(lines[i], 'inactive');
+	        classNames.svgRemove(lines[i], 'inactive');
 	    }
 	};
-	legend.prototype.setElementsAsInactive = function (key) {
-	    var nodes = this.nodes[0],
-	        lines = this.lines[0],
+	Legend.prototype.setElementsAsInactive = function (key) {
+	    var nodes = this.graph.nodes[0],
+	        lines = this.graph.lines[0],
 	        i;
 
 	    for (i = nodes.length - 1; i >= 0; i--) {
 	        if(nodes[i]['__data__'].type !== key && nodes[i]['__data__'].dependsGroups.indexOf(key) === -1) {
-	            classNames.add(nodes[i], 'inactive');
+	            classNames.svgAdd(nodes[i], 'inactive');
 	        }
 	    }
 	    for (i = lines.length - 1; i >= 0; i--) {
 	        if(lines[i]['__data__'].source.type !== key && lines[i]['__data__'].target.type !== key) {
-	            classNames.add(lines[i], 'inactive');
+	            classNames.svgAdd(lines[i], 'inactive');
 	        }
 	    }
 	};
 
-	legend.prototype.handleEvent = function (event) {
+	Legend.prototype.handleEvent = function (event) {
 	    var key = attributes.get(event.currentTarget, 'data-legend-key');
 		switch (event.type) {
 			case 'mouseover':
@@ -55,7 +54,7 @@ define([
 	};
 	
 
-	legend.prototype.create = function () {
+	Legend.prototype.create = function () {
 	    var legendTemplate = getElements.byId(this.templateId),
 	        template = nodes.cloneNode(legendTemplate, true),
 	        parent = legendTemplate.parentNode,
@@ -89,5 +88,5 @@ define([
 	    }
 	}
 
-	return legend;
+	return Legend;
 });

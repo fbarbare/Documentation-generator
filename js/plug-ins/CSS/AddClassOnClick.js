@@ -17,10 +17,10 @@ define([
 		var id = attributes.get(event.currentTarget, this.dataAttribute),
 			menu = getElements.byId(id);
 
-		if (classNames.hasClassName(menu, this.activeClass)) {
-			classNames.removeClassName(menu, this.activeClass);
+		if (classNames.has(menu, this.activeClass)) {
+			classNames.remove(menu, this.activeClass);
 		} else {
-			classNames.addClassName(menu, this.activeClass);
+			classNames.add(menu, this.activeClass);
 		}
 	};
 
