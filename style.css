@@ -18,7 +18,7 @@ body {
 li {
 	list-style: none;
 }
-.content {
+.wrapper {
 	width: 100%;
 	height: 100%;
 }
@@ -68,27 +68,48 @@ rect {
 .node {
 	cursor: pointer;
 }
+.button {
+	display: inline-block;
+	margin: 15px;
+	border: solid 1px #333;
+	padding: 5px 10px;
+	font-size: 16px;
+	border-radius: 4px;
+	cursor: pointer;
+	text-align: center;
+	color: inherit;
+	text-decoration: inherit;
+}
 
-
-
-
-
-/* Real Page */
+/*** HEADER ***/
+.header {
+	position: fixed;
+	width: inherit;
+	height: 60px;
+	border-bottom: solid 1px #E6E6E6;
+}
+.header .title {
+	text-align: center;
+	padding: 15px;
+	font-size: 30px;
+	height: 100%;
+}
+.menu-button {
+	float: left;
+}
 
 /*** MENU ***/
 .menu {
 	position: fixed;
-	margin-left: -250px;
-	width: 250px;
+	width: 16%; 
+	margin-left: -16%;
 	height: 100%;
 	z-index: 10;
 	border-right: solid 1px #E6E6E6;
 }
-.menu-active .menu {
-	margin-left: 0px;
-}
-.menu-active .page-content {
-	padding-left: 250px;
+.view-documentation {
+	margin: 0 0 15px;
+	width: 100%;
 }
 .menu h2 {
 	border-bottom: solid 1px #000000;
@@ -118,45 +139,44 @@ rect {
 	display: none;
 }
 
-.page-content {
+/*** CONTENT ***/
+.page {
+	float: right;
+	width: 100%;
+	height: 100%;
+}
+.content {
+	padding-top: 60px;
+	width: 100%;
+	height: 100%;
+}
+.doc {
+	display: none;
+	float: left;
+	width: 50%;
+	height: 100%;
+	border-right: solid 1px #E6E6E6;
+}
+.graph {
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
 }
-.button {
-	right: -40px;
-	text-align: center;
-	background: inherit;
-	cursor: pointer;
-	font-size: 15px;
-	border: solid 1px #333;
-	border-radius: 4px;
-	padding: 5px 10px;
-	margin: 15px;
+.doc-active .doc {
+	display: block;
 }
-.title {
-	width: 100%;
-	line-height: 40px;
-	font-size: 25px;
-	text-align: center;
+.doc-active .graph {
+	width: 50%;
+}
+.doc-content {
+
 }
 
-.graph {
-	width: 100%;
-	height: 100%;
-}
 
-h1 {
-	text-align: center;
-	padding: 15px;
+/*** MENU ACTIVE ***/
+.menu-active .menu {
+	margin-left: 0;
 }
-
-.btn {
-	float: left;
-	cursor: pointer;
-	font-size: 15px;
-	border: solid 1px #333;
-	border-radius: 4px;
-	padding: 5px 10px;
-	margin: 19px;
+.menu-active .page {
+	width: 84%;
 }

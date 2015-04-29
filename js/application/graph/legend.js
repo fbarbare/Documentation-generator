@@ -68,6 +68,7 @@ define([
 	        currentClone = nodes.cloneNode(template, true);
 
 	        attributes.set(currentClone, 'data-legend-key', key);
+	        attributes.set(currentClone, 'data-doc-button', 'page');
 	        eventListeners.add(currentClone, 'mouseover', this);
 	        eventListeners.add(currentClone, 'mouseout', this);
 

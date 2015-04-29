@@ -137,7 +137,7 @@ define([
 
     Nodes.prototype.createNodes = function () {
         var self = this;
-        self.graph.nodes = self.graph.svg.selectAll('.node')
+        self.graph.nodes = self.graph.containerG.selectAll('.node')
             .data(self.graph.force.nodes())
           .enter().append('g')
             .attr('class', 'node')
@@ -165,7 +165,7 @@ define([
     };
 
     Nodes.prototype.createGlow = function () {
-        this.graph.glow = this.graph.svg.append('filter')
+        this.graph.glow = this.graph.containerG.append('filter')
             .attr('x'     , '-50%')
             .attr('y'     , '-50%')
             .attr('width' , '200%')

@@ -6,10 +6,11 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <div id="content" class="content">
+        <div id="wrapper" class="wrapper">
         
             <div id="menu" class="menu">
                 <div class="menu-content">
+                    <a class="button view-documentation avoid-selecting" href="">View full documentation</a>
                     <div id="legend" class="legend-wrapper">
                         <h2>Legend</h2>
                         <ul class="legend-list">
@@ -18,24 +19,24 @@
                                 <span class="legend-text" data-legend="name" ></span>
                             </li>
                         </ul>
-                                 
                     </div>
-                    <ul class="menu-list">
-                        <li>
-                            <a href="">View documentation</a>
-                        </li>
-                    </ul>
                 </div>
             </div>
 
 
-            <div class="page-content">
-                <header>
-                    <div class="btn avoid-selecting" data-menu-button="content">Docs</div>
-                    <h1>Florians WebSite</h1>
+            <div id="page" class="page">
+                <header class="header">
+                    <div class="button menu-button avoid-selecting" data-menu-button="wrapper">Docs</div>
+                    <h1 class="title">Florians WebSite</h1>
                 </header>
 
-                <div id="graph" class="graph"></div>
+                <div id="content" class="content">
+                    <div id="doc" class="doc">
+                        <div class="button avoid-selecting" data-doc-button-close="page">Close</div>
+                        <div id="doc-content" class="doc-content"></div>
+                    </div>
+                    <div id="graph" class="graph"></div>
+                </div>
             </div>
 
 

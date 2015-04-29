@@ -135,5 +135,11 @@ define([
 			.on('tick', this.tick.bind(this));
 	};
 
+	Force.prototype.resize = function () {
+		this.graph.force
+			.size([this.config.size.width, this.config.size.height])
+			.start();
+	};
+
 	return Force;
 });

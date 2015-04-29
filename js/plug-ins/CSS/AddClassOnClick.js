@@ -8,19 +8,29 @@ define([
 	'events/eventListeners'
 ], function(namespace, doc, Array, getElements, classNames, attributes, eventListeners) {
 
-	namespace.AddClassOnClick = function (dataAttribute, activeClass) {
+	namespace.AddClassOnClick = function (dataAttribute, activeClass, keepActive) {
 		this.dataAttribute = dataAttribute;
 		this.activeClass = activeClass || 'active';
+		this.keepActive = keepActive || false;
 	};
 
 	namespace.AddClassOnClick.prototype.handleEvent = function (event) {
-		var id = attributes.get(event.currentTarget, this.dataAttribute),
+		var modified = false,
+			id = attributes.get(event.currentTarget, this.dataAttribute),
 			menu = getElements.byId(id);
 
 		if (classNames.has(menu, this.activeClass)) {
-			classNames.remove(menu, this.activeClass);
+			if (!this.keepActive) {
+				classNames.remove(menu, this.activeClass);
+				modified = true;
+			}
 		} else {
 			classNames.add(menu, this.activeClass);
+			modified = true;
+		}
+
+		if (modified && typeof this.custom === 'function') {
+			this.custom();
 		}
 	};
 

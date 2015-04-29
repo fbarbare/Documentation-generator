@@ -7,7 +7,7 @@ define([
 	}
 
 	Lines.prototype.create = function () {
-        this.graph.svg.append('defs').selectAll('marker')
+        this.graph.containerG.append('defs').selectAll('marker')
             .data(['end'])
           .enter().append('marker')
             .attr('id'          , String)
@@ -20,7 +20,7 @@ define([
           .append('path')
             .attr('d', 'M0,-5L10,0L0,5');
 
-        this.graph.lines = this.graph.svg.append('g').selectAll('.link')
+        this.graph.lines = this.graph.containerG.append('g').selectAll('.link')
             .data(this.graph.force.links())
           .enter().append('line')
             .attr('class', 'link');

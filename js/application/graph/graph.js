@@ -5,8 +5,9 @@ define([
 	'application/graph/Legend',
 	'application/graph/Lines',
 	'application/graph/Nodes',
-	'application/graph/Drag'
-], function(d3, Force, Base, Legend, Lines, Nodes, Drag) {
+	'application/graph/Drag',
+	'elements/getElements'
+], function(d3, Force, Base, Legend, Lines, Nodes, Drag, getElements) {
 
 	function Graph(data, categories, config) {
 		this.data = data;
@@ -16,23 +17,46 @@ define([
 		this.graph = {};
 	}
 
+	Graph.prototype.getSize = function (wrapper) {
+        var element,
+        	size = {};
+
+        wrapper = wrapper || 'body';
+        element = getElements.querySelector(document, wrapper);
+
+        size = {};
+        size.width = element.offsetWidth;
+        size.height = element.offsetHeight;
+
+        return size;
+	};
+
 	Graph.prototype.create = function () {
-		var force, base, legend, lines, nodes, drag;
-
-		force = new Force(this.data, this.data.links, this.graph, this.config);
-		force.create();
-
-		base = new Base(this.graph, this.config);
-		base.create();
-
-		legend = new Legend(this.data.categories, this.config.legend.templateId, this.graph);
-		legend.create();
-
-		lines = new Lines(this.graph);
-		lines.create();
+		this.config.size = this.getSize(this.config.wrapper);
 		
-		nodes = new Nodes(this.data, this.config, this.graph);
-		nodes.create();
+		this.force = new Force(this.data, this.data.links, this.graph, this.config);
+		this.force.create();
+
+		this.base = new Base(this.graph, this.config);
+		this.base.create();
+
+		this.legend = new Legend(this.data.categories, this.config.legend.templateId, this.graph);
+		this.legend.create();
+
+		this.lines = new Lines(this.graph);
+		this.lines.create();
+		
+		this.nodes = new Nodes(this.data, this.config, this.graph);
+		this.nodes.create();
+
+		window.graph = this;
+	};
+
+	Graph.prototype.resize = function () {
+		this.config.size = this.getSize(this.config.wrapper);
+
+		this.base.resize();
+		this.force.resize();
 	};
 
 	return Graph;
