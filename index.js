@@ -12,7 +12,7 @@ module.exports = {
       .replace(/'/g, '&#39;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;');
-  },
+   },
 
   /**
    * Unescape special characters in the given string of html.
