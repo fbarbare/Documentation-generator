@@ -1,0 +1,30 @@
+{
+  "name": "JSGraphDoc",
+  "version": "0.0.0",
+  "description": "A module to generate your JavaScript documentation based on your comments",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/florian-barbare/Documentation-generator.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "documentation",
+    "generator",
+    "JS",
+    "JSGraphDoc"
+  ],
+  "author": "Florian BARBARE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/florian-barbare/Documentation-generator/issues"
+  },
+  "homepage": "https://github.com/florian-barbare/Documentation-generator",
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "mocha": "^2.2.5"
+  }
+}
